@@ -11,14 +11,16 @@ def get_title_from_id(movieId):
 def get_id_from_title(title):
     return df[df.title == title]["movieId"].values[0]
 
-
 # Read Csv File
 df = pd.read_csv("movies.csv")
 #print(df.columns)
 
+#print(df["title"])
 # Selection of features
 features = ["movieId", "title", "genres"]
-
+# Get rid of NaNs
+for feature in features:
+    df[feature]= df[feature].fillna("")
 # Creation of a column in DF which combines all selected features
 
 def combine_features(row):
